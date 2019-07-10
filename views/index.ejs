@@ -1,0 +1,14 @@
+<% include partials/header %>
+<h1>
+   this is the landing page.
+</h1>
+<% blogs.forEach(function(blogs){ %>
+   <div>
+      <h2><%=blogs.title%></h2>
+      <img src="<%=blogs.image%>">
+      <span><%=blogs.screated%></span>
+      <p><%=blogs.body%></p>
+   </div>
+<% }) %>
+
+<% include partials/footer %>
