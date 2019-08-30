@@ -1,18 +1,18 @@
 <% include ./partials/header %>
 
 <div class="ui main container segment">
-      <div class="ui huge header"><%= blog.title %></div>
+      <div class="ui huge header"><%= workout.title %></div>
 
       <div class="ui top attached segment">
          <div class="item">
             <div class="content">
-               <span><%=blog.created.toDateString()%></span>
+               <span><%=workout.date.toDateString()%></span>
             </div>
             <div class="description">
-               <p><%=blog.body%></p>
+               <p><%=workout.notes%></p>
             </div>
-            <a class="ui blue basic button" href="/blogs/<%=blog._id%>/edit">Edit</a>
-            <form  id="delete" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+            <a class="ui blue basic button" href="/workouts/<%=workout._id%>/edit">Edit</a>
+            <form  id="delete" action="/workouts/<%=workout._id%>?_method=DELETE" method="POST">
                <button class="ui red basic button">Delete</button>
             </form>
          

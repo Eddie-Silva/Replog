@@ -1,0 +1,49 @@
+<% include ./partials/header %>
+
+<div class="ui main container">
+   <div class="ui huge header">
+      Your Rep Logs
+   </div>
+   <div class="ui top attached segment">
+      <div class="ui divided items">
+
+         <% workouts.forEach(function(workout){ %>
+            <div class="item">
+               
+               <div class="content">
+                  <a class="header" href="/workouts/<%=workout._id%>">
+                     <%=workout.title%>
+                  </a>
+
+                  <div class="meta">
+                     <span><%=workout.created.toDateString()%></span>
+                  </div>
+
+                  <div class="description">
+                     <p><%-wokrout.body.substring(0,100)%>...</p> <!--the dash "-" before  workout.body is to alow for html syntax when writing in text field-->
+                  </div>
+
+                  <div class="extra">
+                     <a class="ui floated basic gray button" href="/workouts/<%= workout._id %>">
+                        Read More
+                        <i class="right chevron icon"></i>
+                     </a>
+                     <a>
+                        Add Reps
+                     </a>
+
+                  <!-----------List of excercise per workout ----------------->
+                     
+                     
+
+
+                  <!-----------End of exercieses ----------------->
+                  </div>
+               </div>
+            </div>
+         <% }) %>
+      </div>   
+   </div>
+</div>
+
+<% include ./partials/footer %>

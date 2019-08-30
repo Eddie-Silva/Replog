@@ -1,0 +1,33 @@
+<% include ./partials/header %>
+
+<div class="ui main container">
+
+   <div class="ui huge header">
+      <h1>Add new exercise</h1>
+   </div>
+
+   <div class="ui top attached segment">
+      <div class="ui divided items">
+
+         <form action="/workouts/<%= workout._id %>/exercise" method="POST">
+
+            <div class="">
+               <input class="" type="text" placeholder="text" name="comment[text]">
+            </div>
+
+            <div class="">
+
+               <button class="">
+                  Submit
+               </button>
+
+            </div>
+
+         </form>
+
+      </div>   
+   </div>
+
+</div>
+
+<% include ./partials/footer %>
