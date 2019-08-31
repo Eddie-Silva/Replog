@@ -21,32 +21,45 @@ router.get("/new", function(req, res){
 
 //exercise CREATE
 router.post("/", function(req,res){
-   //lookup compground using ID
+
+   //lookup workout to add exercise too
    Workout.findById(req.params.id, function(err, foundWorkout){
       if(err){
          console.log(err);
          res.redirect("/wourkouts");
       } else {
          //create new exercise
-         Exercise.create(req.body.exercise, function(err, exercise){
+         let newType = req.body.Exercise;
+         // let newWeight = req.body.Exercise.weight;
+         // let newRep = req.body.Exercise.reps;
+      
+         // let author = {
+         //    id: req.user._id,
+         //    username: req.user.username
+         // };
+      
+         let newExercise = newType;
+         Exercise.create(newExercise, function(err, createdExercise){
             if(err){
-               
-               console.log(err);
-               
+               console.log(err + "new exercise was not created");
+            
             } else {
+               console.log(createdExercise);
+
                //add username and id to exercise
-               exercise.author.id = req.user._id;
-               exercise.author.username = req.user.username;
+               // createdExercise.author.id = req.user._id;
+               // createdExercise.author.username = req.user.username;
+
                //save exercise
-               exercise.save()
+               // foundWorkout.save();
+               
                //connect new Exercise to Workout
-               foundWorkout.exercise.push(exercise)
+               foundWorkout.exercise.push(createdExercise);
                foundWorkout.save();
-               res.redirect("/workouts/" + foundWorkout._id);
-              }
-         });
-         
-         }
+               res.redirect("/workouts");
+            }
+         });   
+      }
    });
 });
 
@@ -72,7 +85,7 @@ router.put("/:exercise_id", function(req, res){
       if(err){
          res.redirect("back")
       } else {
-         res.redirect("/workouts/" + req.params.id)
+         res.redirect("/workouts");
       }
    });
 });
@@ -84,7 +97,7 @@ router.delete("/:exercise_id", function(req, res){
       if(err){
          res.redirect("back")
       } else {
-         res.redirect("/workouts/" + req.params.id)
+         res.redirect("/workouts");
       }
    });
 });

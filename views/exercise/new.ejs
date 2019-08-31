@@ -1,4 +1,4 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
 <div class="ui main container">
 
@@ -12,8 +12,14 @@
          <form action="/workouts/<%= workout._id %>/exercise" method="POST">
 
             <div class="">
-               <input class="" type="text" placeholder="text" name="comment[text]">
+               <input class="" type="text" placeholder="Type of exercise" name="Exercise[type]">
             </div>
+            <div class="">
+                  <input class="" type="text" placeholder="How much weight" name="Exercise[weight]">
+               </div>
+               <div class="">
+                     <input class="" type="number" placeholder="How many reps" name="Exercise[reps]">
+                  </div>
 
             <div class="">
 
@@ -30,4 +36,4 @@
 
 </div>
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>

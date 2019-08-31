@@ -40,6 +40,9 @@ app.use(function(req, res, next){ //called on every route
    next();
 });
 
+app.use("/", indexRoutes);
+app.use("/workouts", workoutRoutes);
+app.use("/workouts/:id/exercise", exerciseRoutes)
 
 //server SETUP
 app.listen(3000, function(){

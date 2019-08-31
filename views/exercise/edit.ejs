@@ -1,13 +1,15 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
 
 <div class="">
    <div class="">
-      <h1> Edit Comment</h1>
+      <h1> Edit Exercise</h1>
 
       <form action="/workouts/<%=workout_id%>/exercise/<%=exercise._id%>?_method=PUT" method="POST">
          <div class="">
-            <input class="" type="text" name="comment[text]" value="<%=exercise.type%>">
+            <input class="" type="text" name="exercise[type]" value="<%=exercise.type%>">
+            <input class="" type="text" name="exercise[weight]" value="<%=exercise.weight%>">
+            <input class="" type="number" name="exercise[reps]" value="<%=exercise.reps%>">
             <!--need to add the other exercise fields-->
          </div>
          <div class="">
@@ -22,4 +24,4 @@
 
 <a href="/workouts">Back to campgrounds</a>
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>

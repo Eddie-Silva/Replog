@@ -6,17 +6,17 @@
    <form class="ui form" action="/workouts" method="POST">
       <div class="field">
          <label>Workout</label>
-        <input type="text" name="workout[title]" placeholder=".eg Upper Body, Cardio"> 
+        <input type="text" name="routine[title]" placeholder=".eg Upper Body, Cardio"> 
       </div>
          
       <div class="field">
             <label>Date</label>
-            <input type="text" name="workout[date]" placeholder="01/01/2018">
+            <input type="text" name="routine[date]" placeholder="01/01/2018" required>
          </div>
          
          <div class="field">
                <label>Notes</label>
-               <textarea name="workout[notes]" required></textarea>
+               <textarea name="routine[notes]"></textarea>
             </div>
    
          <input class="ui blue big basic button" type="submit">

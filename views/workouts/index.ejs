@@ -1,4 +1,4 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
 <div class="ui main container">
    <div class="ui huge header">
@@ -7,43 +7,77 @@
    <div class="ui top attached segment">
       <div class="ui divided items">
 
-         <% workouts.forEach(function(workout){ %>
+         <% workouts.forEach(function(iWorkout){ %>
             <div class="item">
                
                <div class="content">
-                  <a class="header" href="/workouts/<%=workout._id%>">
-                     <%=workout.title%>
+                  <a class="header" href="/workouts/<%=iWorkout._id%>">
+                     <%=iWorkout.title%>
                   </a>
 
                   <div class="meta">
-                     <span><%=workout.created.toDateString()%></span>
+                     <span><%=iWorkout.date.toDateString()%></span>
                   </div>
 
                   <div class="description">
-                     <p><%-wokrout.body.substring(0,100)%>...</p> <!--the dash "-" before  workout.body is to alow for html syntax when writing in text field-->
+                     <p><%=iWorkout.notes%></p> <!--the dash "-" before  workout.notes is to alow for html syntax when writing in text field-->
                   </div>
 
                   <div class="extra">
-                     <a class="ui floated basic gray button" href="/workouts/<%= workout._id %>">
+                     <a class="ui floated basic gray button" href="/workouts/<%= iWorkout._id %>">
                         Read More
                         <i class="right chevron icon"></i>
                      </a>
-                     <a>
+                     <a href="/workouts/<%=iWorkout._id%>/exercise/new">
                         Add Reps
                      </a>
+                  </div>
 
                   <!-----------List of excercise per workout ----------------->
                      
+                  <div class="">        
+                        <% iWorkout.exercise.forEach(function(iExercise){ %>
+                           <div class="">
+                              <div class=""> 
+                                 <h4>
+                                    <%= iExercise.type %>
+                                 </h4>
+                                 <p>
+                                    <%= iExercise.weight %>
+                                 </p>
+                                 <p>
+                                    <%= iExercise.reps %>
+                                 </p>
+                                 
+                                 <!--Edit/Delete exercise-->
+                                    <a class=""
+                                       href="/workouts/<%=iWorkout._id%>/exercise/<%=iExercise._id %>/edit">
+                                       Edit
+                                    </a>
+                                    <form action="/workouts/<%=iWorkout._id%>/exercise/<%=iExercise._id%>?_method=DELETE"
+                                          method="POST">
+                        
+                                       <button class=""
+                                                value="Delete" >
+                                                Delete
+                                       </button>    
+                                    </form>
+                                 
+                                 <hr>  
+                              </div>
+                           </div>
+                        <% }); %>   
+                     </div>    
                      
 
 
                   <!-----------End of exercieses ----------------->
-                  </div>
+                  
                </div>
             </div>
-         <% }) %>
+         <% }); %>
       </div>   
    </div>
 </div>
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>
