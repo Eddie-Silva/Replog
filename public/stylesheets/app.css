@@ -2,6 +2,14 @@ i.icon {
    font-size: 2em;
 }
 
+.container.header {
+   margin-top: 7.0em;
+}
+
+div.ui.main {
+   margin-top: 110px;
+}
+
 
 .top-padding {
    padding-top: 1rem;
