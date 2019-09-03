@@ -45,7 +45,8 @@ app.use("/workouts", workoutRoutes);
 app.use("/workouts/:id/exercise", exerciseRoutes)
 
 //server SETUP
-app.listen(3000, function(){
-   console.log("app server running");
-   
+let port = process.env.PORT || 3000;
+let ip = process.env.IP || "127.0.0.1";
+app.listen(port,function(){
+    console.log("Server has started")
 });
