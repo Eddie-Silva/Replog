@@ -1,39 +1,40 @@
 <% include ../partials/header %>
 
 <div class="ui main container">
+   <div class="ui segment">
 
-   <div class="ui huge header">
-      <h1>Add new exercise</h1>
-   </div>
+      <div class="ui huge center align header">
+         Add new exercise
+      </div>
 
-   <div class="ui top attached segment">
-      <div class="ui divided items">
-
+      <div class="ui form">
          <form action="/workouts/<%= workout._id %>/exercise" method="POST">
 
-            <div class="">
-               <input class="" type="text" placeholder="Type of exercise" name="Exercise[type]">
-            </div>
-            <div class="">
-                  <input class="" type="text" placeholder="How much weight" name="Exercise[weight]">
+            <div class="three fields">
+               <div class="field">
+                     <label>Exercise</label>
+                  <input class="" type="text" placeholder="curls, squats, press..." name="Exercise[type]">
                </div>
-               <div class="">
-                     <input class="" type="number" placeholder="How many reps" name="Exercise[reps]">
-                  </div>
 
-            <div class="">
+               <div class="field">
+                     <label>Weight</label>
+                  <input class="" type="text" placeholder="100lb/kg" name="Exercise[weight]">
+               </div>
 
-               <button class="">
-                  Submit
-               </button>
-
+               <div class="field">
+                     <label>Reps</label>
+                  <input class="" type="number" placeholder="6 full - 3 cheat reps" name="Exercise[reps]">
+               </div>
             </div>
-
+            
+            <button class="fluid basic positive ui button" type="submit">
+               Submit
+            </button>
+            
          </form>
+      </div>  
 
-      </div>   
    </div>
-
 </div>
 
 <% include ../partials/footer %>

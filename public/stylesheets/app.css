@@ -13,3 +13,7 @@ div.ui.main {
 #delete {
    display: inline-block;
 }
+
+.top-padding {
+   padding-top: 1rem;
+}

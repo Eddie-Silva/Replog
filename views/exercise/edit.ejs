@@ -1,27 +1,43 @@
 <% include ../partials/header %>
 
 
-<div class="">
-   <div class="">
-      <h1> Edit Exercise</h1>
+<div class="ui main container">
+   <div class="ui segment">
 
-      <form action="/workouts/<%=workout_id%>/exercise/<%=exercise._id%>?_method=PUT" method="POST">
-         <div class="">
-            <input class="" type="text" name="exercise[type]" value="<%=exercise.type%>">
-            <input class="" type="text" name="exercise[weight]" value="<%=exercise.weight%>">
-            <input class="" type="number" name="exercise[reps]" value="<%=exercise.reps%>">
-            <!--need to add the other exercise fields-->
-         </div>
-         <div class="">
-         <button class="">
-            Submit
-         </button>
-         </div>
-      </form>
+      <div class="ui huge center align header">
+         Edit Exercies
+      </div>
+
+      <div class="ui fuid form">
+         <form action="/workouts/<%=workout_id%>/exercise/<%=exercise._id%>?_method=PUT" method="POST">
+            <div class="three fields">
+               <div class="field">
+                  <label>Exercise</label>
+                     <input type="text" name="exercise[type]" value="<%=exercise.type%>">
+               </div>
+               
+               <div class="field">
+                  <label>Weight</label>
+                  <input class="field" type="text" name="exercise[weight]" value="<%=exercise.weight%>">
+               </div>
+
+               <div class="field">
+                  <label>Reps</label>
+                  <input class="field" type="number" name="exercise[reps]" value="<%=exercise.reps%>">
+               </div>
+            </div>
+
+            <div class="">
+            <button class="fluid basic positive ui button" type="submit">
+               Submit
+            </button>
+            </div>
+
+         </form>
+      </div>
+      
 
    </div>  
 </div>
-
-<a href="/workouts">Back to campgrounds</a>
 
 <% include ../partials/footer %>

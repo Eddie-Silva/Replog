@@ -1,83 +1,136 @@
 <% include ../partials/header %>
 
-<div class="ui main container">
-   <div class="ui huge header">
+<div class="ui raised very padded container segment">
+
+   <div class="ui basic segment">
+   </div>
+
+   <div class="ui attached centered huge header">
       Your Rep Logs
    </div>
-   <div class="ui top attached segment">
-      <div class="ui divided items">
 
-         <% workouts.forEach(function(iWorkout){ %>
-            <div class="item">
+   <!--Workouts-->
+   <% var reversedWorkout = workouts.reverse() %>
+   <% reversedWorkout.forEach(function(iWorkout){ %>
+      <div class="ui top attached segment">
+
+         <form action="/workouts/<%=iWorkout._id%>?_method=DELETE" 
+               method="POST">
+            <button class="ui red right floated button">
+               DELETE
+            </button>
+         </form>
+
+         <div class="item">
+            <div class="content">
+
+               <div class="ui large header">
+                  <%=iWorkout.title%>
+               </div>
+
+               <div class="meta">
+                  <span><%=iWorkout.date.toDateString()%></span>
+               </div>
+
+               <div class="description">
+                  <p><%=iWorkout.notes%></p>
+               </div>
                
-               <div class="content">
-                  <a class="header" href="/workouts/<%=iWorkout._id%>">
-                     <%=iWorkout.title%>
-                  </a>
+            </div>  
 
-                  <div class="meta">
-                     <span><%=iWorkout.date.toDateString()%></span>
-                  </div>
-
-                  <div class="description">
-                     <p><%=iWorkout.notes%></p> <!--the dash "-" before  workout.notes is to alow for html syntax when writing in text field-->
-                  </div>
-
-                  <div class="extra">
-                     <a class="ui floated basic gray button" href="/workouts/<%= iWorkout._id %>">
-                        Read More
-                        <i class="right chevron icon"></i>
-                     </a>
-                     <a href="/workouts/<%=iWorkout._id%>/exercise/new">
+            <div class="top-padding">
+               <a href="/workouts/<%=iWorkout._id%>/exercise/new" >
+                  <button class="basic primary ui button top-padding">
                         Add Reps
-                     </a>
-                  </div>
+                  </button>
+               </a>
+            </div>
+         
+         </div>  
+            
+            <!-----------List of excercise per workout ----------------->
 
-                  <!-----------List of excercise per workout ----------------->
-                     
-                  <div class="">        
-                        <% iWorkout.exercise.forEach(function(iExercise){ %>
-                           <div class="">
-                              <div class=""> 
-                                 <h4>
-                                    <%= iExercise.type %>
-                                 </h4>
-                                 <p>
-                                    <%= iExercise.weight %>
-                                 </p>
-                                 <p>
-                                    <%= iExercise.reps %>
-                                 </p>
-                                 
-                                 <!--Edit/Delete exercise-->
-                                    <a class=""
-                                       href="/workouts/<%=iWorkout._id%>/exercise/<%=iExercise._id %>/edit">
-                                       Edit
-                                    </a>
-                                    <form action="/workouts/<%=iWorkout._id%>/exercise/<%=iExercise._id%>?_method=DELETE"
-                                          method="POST">
-                        
-                                       <button class=""
-                                                value="Delete" >
-                                                Delete
-                                       </button>    
-                                    </form>
-                                 
-                                 <hr>  
-                              </div>
-                           </div>
-                        <% }); %>   
+            <div class="ui raised segments">  
+
+               <div class="ui violet segment">
+                  <div class="ui three column very relaxed grid">
+
+                     <div class="column">
+                        <div class="ui regular grey padded header">
+                           Exercise
+                        </div>
+                     </div>
+
+                     <div class="column">
+                        <div class="ui regular grey header">
+                           Weight
+                        </div>
+                     </div>
+
+                     <div class="column">
+                        <div class="ui regular grey header">
+                           Reps
+                        </div>
+                     </div>
+
+                  </div> 
+               </div>    
+
+               <% iWorkout.exercise.forEach(function(iExercise){ %>
+               <div class="ui segment">
+                  <div class="ui three column very relaxed grid">
+
+                     <div class="column"> 
+                        <div class="ui small header">
+                           <%=iExercise.type%>
+                        </div>   
                      </div>    
                      
+                     <div class="column">
+                        <div class="ui small header">
+                           <%=iExercise.weight%>
+                        </div>                                                                         
+                     </div>
+                     
+                     <div class="column">
+                        <div class="ui small header">
+                           <%=iExercise.reps%>
+                        </div>   
+                     </div>
+                        
+                  </div>
+               
 
+                  <!--Edit/Delete buttons-->
 
-                  <!-----------End of exercieses ----------------->
-                  
+                  <div class="ui mini buttons top-padding">
+
+                     <a href="/workouts/<%=iWorkout._id%>/exercise/<%=iExercise._id%>/edit">
+                        <button class="ui button" type="button">                        
+                           Edit
+                        </button>
+                     </a>
+
+                     <div class="or"></div>
+
+                     <form action="/workouts/<%=iWorkout._id%>/exercise/<%=iExercise._id%>?_method=DELETE"
+                           method="POST">
+         
+                        <button class="ui orange button">
+                                 Remove
+                        </button>    
+                     </form>
+
+                  </div>
+                           
                </div>
-            </div>
-         <% }); %>
-      </div>   
-   </div>
+               <% }); %>   
+                  
+            </div>    
+            <!-----------End of exercieses ----------------->
+
+      </div>
+   <% }); %> 
 </div>
 
 <% include ../partials/footer %>

@@ -3,23 +3,26 @@
 <div class="ui main text container segment">
    <div class="ui huge header">Create a new session</div>
 
-   <form class="ui form" action="/workouts" method="POST">
-      <div class="field">
-         <label>Workout</label>
-        <input type="text" name="routine[title]" placeholder=".eg Upper Body, Cardio"> 
-      </div>
-         
-      <div class="field">
+   <form class="ui large form equal width form" action="/workouts" method="POST">
+
+      <div class="fields">
+         <div class="field">
+            <label>Workout</label>
+            <input type="text" name="routine[title]" placeholder=".eg Upper Body, Cardio" required> 
+         </div>
+               
+         <div class="field">
             <label>Date</label>
             <input type="text" name="routine[date]" placeholder="01/01/2018" required>
          </div>
-         
-         <div class="field">
-               <label>Notes</label>
-               <textarea name="routine[notes]"></textarea>
-            </div>
+      </div>
+      
+      <div class="field">
+         <label>Notes</label>
+         <textarea name="routine[notes]"></textarea>
+      </div>
    
-         <input class="ui blue big basic button" type="submit">
+      <input class="ui blue submit button" type="submit">
    </form>
 </div>
 

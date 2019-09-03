@@ -24,14 +24,13 @@ router.post("/", function(req,res){
 
    //lookup workout to add exercise too
    Workout.findById(req.params.id, function(err, foundWorkout){
+      
       if(err){
          console.log(err);
-         res.redirect("/wourkouts");
+         res.redirect("/workouts");
       } else {
          //create new exercise
          let newType = req.body.Exercise;
-         // let newWeight = req.body.Exercise.weight;
-         // let newRep = req.body.Exercise.reps;
       
          // let author = {
          //    id: req.user._id,
@@ -44,19 +43,18 @@ router.post("/", function(req,res){
                console.log(err + "new exercise was not created");
             
             } else {
-               console.log(createdExercise);
 
                //add username and id to exercise
                // createdExercise.author.id = req.user._id;
                // createdExercise.author.username = req.user.username;
 
                //save exercise
-               // foundWorkout.save();
-               
+               createdExercise.save();
+
                //connect new Exercise to Workout
                foundWorkout.exercise.push(createdExercise);
                foundWorkout.save();
-               res.redirect("/workouts");
+               res.redirect("/");
             }
          });   
       }
@@ -92,6 +90,7 @@ router.put("/:exercise_id", function(req, res){
 
 //exercise DESTROY route
 router.delete("/:exercise_id", function(req, res){
+
    //find by id and remove
    Exercise.findByIdAndRemove(req.params.exercise_id, function(err){
       if(err){
