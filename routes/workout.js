@@ -28,15 +28,6 @@ router.post("/", function(req, res){
 
    
    let newRoutine = req.body.routine; // get the "routine object from form"
-   
-
-   //console.log(req.user); --view the user data
-   //  let author = {
-   //    id: req.user._id,
-   //    username: req.user.username
-   // };
-
-   //let newWorkout = newRoutine; //makes a new {} with the propertie = to the var newTitle...
 
    Workout.create(newRoutine, function(err, newlyCreated){ //Create new Workout and save to database
       if(err){

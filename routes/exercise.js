@@ -32,22 +32,12 @@ router.post("/", function(req,res){
          //create new exercise
          let newType = req.body.Exercise;
       
-         // let author = {
-         //    id: req.user._id,
-         //    username: req.user.username
-         // };
-      
          let newExercise = newType;
          Exercise.create(newExercise, function(err, createdExercise){
             if(err){
                console.log(err + "new exercise was not created");
             
             } else {
-
-               //add username and id to exercise
-               // createdExercise.author.id = req.user._id;
-               // createdExercise.author.username = req.user.username;
-
                //save exercise
                createdExercise.save();
 
