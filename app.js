@@ -20,6 +20,7 @@ const indexRoutes = require("./routes/index");
 //Database setup
 mongoose.connect("mongodb+srv://admin:admin1234@cluster0-qzbm1.mongodb.net/test?retryWrites=true&w=majority", { //connect to mongodb atlas database
    useNewUrlParser: true, 
+   useCreateIndex:true,
    useFindAndModify: false
 }).then(() => {
    console.log("connected to DB");
