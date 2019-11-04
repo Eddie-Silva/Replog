@@ -9,6 +9,10 @@
       Your Rep Logs
    </div>
 
+   <div class="create-action">
+      <a href="/workouts/new" class="large fluid centered positive ui button">Create Log</a>
+   </div>
+
    <!--Workouts-->
    <% var reversedWorkout = workouts.reverse() %>
    <% reversedWorkout.forEach(function(iWorkout){ %>
@@ -40,7 +44,7 @@
 
             <div class="top-padding">
                <a href="/workouts/<%=iWorkout._id%>/exercise/new" >
-                  <button class="basic primary ui button top-padding">
+                  <button class="primary ui button top-padding">
                         Add Reps
                   </button>
                </a>

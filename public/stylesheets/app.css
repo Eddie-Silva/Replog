@@ -14,3 +14,7 @@ div.ui.main {
 .top-padding {
    padding-top: 1rem;
 }
+
+.create-action {
+   padding: 30px 70px;
+}
